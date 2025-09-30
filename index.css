@@ -1,0 +1,53 @@
+/* --- Mejoras Estéticas Adicionales --- */
+
+        /* 1. Brillo Sutil en el Contenedor Principal (Efecto Galáctico) */
+        .container.mx-auto {
+            /* Se superpone la sombra de Tailwind con una personalizada para un doble brillo */
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), /* Brillo púrpura suave */
+                        0 0 40px rgba(236, 72, 153, 0.2); /* Brillo rosa más difuso */
+        }
+        
+        /* 2. Efecto de Hover Mejorado y más dinámico en las Tarjetas de Producto */
+        /* Este selector apunta a todos los productos (elementos que empiezan con 'product-') */
+        [id^="product-"] {
+            /* Curva de animación más suave para la transición */
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            cursor: pointer;
+        }
+        
+        [id^="product-"]:hover {
+            transform: translateY(-6px) scale(1.03); /* Se eleva y crece un poco más al pasar el ratón */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), /* Sombra fuerte para darle profundidad */
+                        0 0 40px rgba(251, 191, 36, 0.5); /* Brillo dorado/amarillo alrededor */
+            border-color: #FBBF24; /* Borde dorado/amarillo en hover */
+        }
+
+        /* 3. Color de Selección de Texto (Mejora de experiencia de usuario) */
+        ::selection {
+            background-color: #6D28D9; /* Púrpura oscuro */
+            color: #ffffff;
+        }
+        
+        /* 4. Estrellas de Calificación más Vibrantes y Luminosas */
+        .star-rating input:checked ~ label, 
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            /* Añade una sombra de texto que simula un brillo intenso */
+            text-shadow: 0 0 10px rgba(251, 191, 36, 1);
+        }
+
+        /* 5. Animación de "Pulso" para el Botón Principal de WhatsApp (Llamada a la Acción) */
+        /* Nota: Necesitarías añadir esta clase `whatsapp-pulse` al botón de WhatsApp en el HTML 
+           para que el efecto sea visible, o usar el selector específico de Tailwind (más complejo).
+           Usaremos el selector para el botón que está en la sección de Contacto. */
+        
+        /* Selector para el botón de contacto de WhatsApp */
+        .mt-2.inline-block.bg-green-500 {
+            animation: pulse-whatsapp 2s infinite;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(76, 201, 74, 0.7); } /* Verde de WhatsApp */
+            70% { box-shadow: 0 0 0 15px rgba(76, 201, 74, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 201, 74, 0); }
+        }

@@ -64,6 +64,7 @@
             animation: glow 3s ease-in-out infinite alternate;
         }
 
+        /* 2. Efecto Hover de Neón en el Contenedor Principal */
         .container {
             transition: box-shadow 0.5s ease-in-out;
         }
@@ -197,7 +198,7 @@
                 ¡Con los mejores Brainrot del juego!
             </p> 
             <p class="text-sm font-light text-gray-400 mt-4">
-                Visitas totales: <span id="visitCount" class="font-bold text-yellow-500">0</span>
+                Visitas totales: <span id="visitCount" class="font-bold text-yellow-500">934</span>
             </p>
         </header>
         
@@ -494,24 +495,26 @@
     </div>
 
     <script>
-        // Lógica de JavaScript para el Contador de Visitas
-        function initializeVisitCounter() {
-            const countElement = document.getElementById('visitCount');
-            let visitCount = parseInt(localStorage.getItem('roblox_visit_count') || 0, 10);
-            
-            // Incrementar y guardar el nuevo valor
-            visitCount += 1;
-            localStorage.setItem('roblox_visit_count', visitCount);
-            
-            // Mostrar el valor
-            if (countElement) {
-                countElement.textContent = visitCount.toLocaleString(); // Formato de número
-            }
-        }
+        // --- CONFIGURACIÓN DE LAS REGLAS DINÁMICAS ---
+        const UPDATE_INTERVAL_MS = 15 * 60 * 1000; // 15 minutos en milisegundos
+        const VISIT_INCREMENT_PER_INTERVAL = 5;
+        const COMMENT_COUNT_INCREMENT_PER_INTERVAL = 2;
+        const INITIAL_VISIT_COUNT = 934;
+        const INITIAL_STATIC_COMMENT_COUNT = 10567; // Base count for display
+
+        // Nuevos comentarios "menos perfectos" para simular realismo
+        const newRealisticComments = [
+            { name: "Carlos S.", rating: 3, text: "La cuenta es buena, pero la **entrega tardó casi 2 horas** después del pago. ¡Mejorar eso!", isComplaint: true },
+            { name: "Luisa A.", rating: 4, text: "Todo bien, solo **falta más stock** de cuentas baratas.", isComplaint: false },
+            { name: "Anonimoo", rating: 5, text: "¡Funciona perfecto! El mejor precio. Recomendado.", isComplaint: false },
+            { name: "Jesús M.", rating: 2, text: "Tuve que contactar dos veces y el Brainrot no era el que esperaba. Desinstalando...", isComplaint: true },
+            { name: "Sofia P.", rating: 4, text: "Buen vendedor, aunque la respuesta fue lenta a la hora de pagar. Me puso nerviosa.", isComplaint: true },
+            { name: "Cliente X", rating: 5, text: "¡Súper rápido y seguro! Ya tengo mi cuenta.", isComplaint: false },
+        ];
+
 
         // Lógica de JavaScript para el Modal de Imagen
         function showImageModal(imageSrc, event) {
-            // Prevenir que el evento de clic en el botón Pagar también abra el modal
             if (event.target.tagName.toLowerCase() === 'button' || event.target.tagName.toLowerCase() === 'a') {
                 return;
             }
@@ -523,7 +526,6 @@
 
         function closeImageModal(event) {
             const modal = document.getElementById('imageModal');
-            // Cierra si se hace clic fuera de la imagen o en el botón de cerrar
             if (event.target === modal || event.target.id === 'closeButton') {
                 modal.style.display = 'none';
                 document.getElementById('modalImage').src = '';
@@ -535,35 +537,95 @@
             const productElement = document.getElementById(`product-${productNumber}`);
             const productName = productElement.querySelector('.product-number').textContent;
             const productPrice = productElement.querySelector('.text-3xl').textContent.trim();
-            // Número de WhatsApp (debe ser el mismo que el del encabezado, ejemplo usado: +51 900 779 111)
             const whatsappNumber = '51900779111'; 
             const message = `Hola, estoy interesado en comprar la cuenta ${productName} por ${productPrice}. Por favor, dame las instrucciones para el pago.`;
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
         }
 
+        // Lógica para el Contador de Visitas y Comentarios Dinámicos (AHORA CON SINCRONIZACIÓN POR TIEMPO)
+        function initializeAndIncrementStats() {
+            const now = Date.now();
+            let lastUpdate = parseInt(localStorage.getItem('roblox_last_update') || now, 10);
+            let baseVisits = parseInt(localStorage.getItem('roblox_visit_count') || INITIAL_VISIT_COUNT, 10);
+            let baseTotalComments = parseInt(localStorage.getItem('roblox_total_comment_count') || INITIAL_STATIC_COMMENT_COUNT, 10);
+            let dynamicComments = JSON.parse(localStorage.getItem('roblox_dynamic_comments') || '[]');
+
+            // 1. Calcular el tiempo transcurrido y los intervalos
+            const timeElapsed = now - lastUpdate;
+            const intervalsPassed = Math.floor(timeElapsed / UPDATE_INTERVAL_MS);
+
+            if (intervalsPassed > 0) {
+                // 2. Incrementar visitas y total de comentarios
+                baseVisits += intervalsPassed * VISIT_INCREMENT_PER_INTERVAL;
+                baseTotalComments += intervalsPassed * COMMENT_COUNT_INCREMENT_PER_INTERVAL;
+
+                // 3. Generar y añadir nuevos comentarios 'realistas'
+                for (let i = 0; i < intervalsPassed; i++) {
+                    const newCommentTemplate = newRealisticComments[Math.floor(Math.random() * newRealisticComments.length)];
+                    
+                    // Variar la calificación
+                    let finalRating = newCommentTemplate.rating;
+                    if (newCommentTemplate.isComplaint) {
+                        // Las quejas varían entre 2 y 4 estrellas
+                        finalRating = Math.floor(Math.random() * 3) + 2; // Rango [2, 4]
+                    }
+
+                    const newComment = {
+                        id: Date.now() + i, 
+                        name: newCommentTemplate.name,
+                        rating: finalRating,
+                        text: newCommentTemplate.text,
+                        // Simular el tiempo de publicación real
+                        timestamp: new Date(lastUpdate + ((i + 1) * UPDATE_INTERVAL_MS)).toISOString()
+                    };
+                    dynamicComments.unshift(newComment); 
+                }
+                
+                // Limitar la cantidad de comentarios dinámicos guardados (p. ej., a 50)
+                if (dynamicComments.length > 50) {
+                    dynamicComments = dynamicComments.slice(0, 50);
+                }
+            }
+            
+            // 4. Asegurar que el contador de visitas se incremente por la visita actual (si no se hizo por intervalo)
+            // Se asume que el incremento de 1 por visita ya está incluido en los cálculos de intervalos si la página estuvo cerrada.
+            // Si no hubo intervalos (página recién abierta), incrementamos 1 por la visita.
+            if (intervalsPassed === 0) {
+                 baseVisits += 1; 
+            }
+
+            // 5. Guardar el nuevo estado
+            localStorage.setItem('roblox_visit_count', baseVisits);
+            localStorage.setItem('roblox_total_comment_count', baseTotalComments);
+            localStorage.setItem('roblox_dynamic_comments', JSON.stringify(dynamicComments));
+            localStorage.setItem('roblox_last_update', now); // Guarda el nuevo tiempo de la última actualización
+
+            // 6. Actualizar la visualización
+            document.getElementById('visitCount').textContent = baseVisits.toLocaleString();
+            document.getElementById('totalCommentsCount').textContent = `(${baseTotalComments.toLocaleString()} comentarios)`;
+
+            // Devolver los comentarios dinámicos para el display
+            return dynamicComments;
+        }
+
         // Lógica de JavaScript para la Gestión de Comentarios
         const commentsList = document.getElementById('commentsList');
         const commentForm = document.getElementById('commentForm');
         
-        // Comentarios iniciales (8 comentarios con solo nombres)
+        // Comentarios iniciales (Estáticos, se mezclan con los dinámicos)
         let initialComments = [
             { id: 1, name: "Lucas", rating: 5, text: "¡Súper **seguro** y la entrega fue inmediata! Los **precios** son lo mejor, muy **accesibles** para la calidad de las cuentas. ¡Recomendado 100%!", timestamp: new Date(Date.now() - 3600000).toISOString() }, 
             { id: 2, name: "Sofía", rating: 5, text: "Tenía dudas, pero esta página es totalmente **segura**. Pude comprar sin problemas y el precio es muy económico. ¡Mi nueva tienda de confianza!", timestamp: new Date(Date.now() - 7200000).toISOString() }, 
             { id: 3, name: "Andrés", rating: 5, text: "La atención por WhatsApp es rápida y el código me funcionó al instante. ¡Gracias!", timestamp: new Date(Date.now() - 10800000).toISOString() }, 
             { id: 4, name: "Valeria", rating: 4, text: "Buena variedad de cuentas. El precio es justo, aunque la imagen tardó un poco en cargar.", timestamp: new Date(Date.now() - 14400000).toISOString() }, 
             { id: 5, name: "Diego", rating: 4, text: "Todo bien, la cuenta llegó rápido. Podrían mejorar el diseño del chat.", timestamp: new Date(Date.now() - 86400000).toISOString() }, 
-            { id: 6, name: "Marta", rating: 5, text: "Excelente servicio, la cuenta es mejor de lo que esperaba.", timestamp: new Date(Date.now() - 172800000).toISOString() }, 
-            { id: 7, name: "Javier", rating: 5, text: "¡Demasiado bueno para ser real! Totalmente seguro, y los precios son un regalo. ¡A comprar!", timestamp: new Date(Date.now() - 259200000).toISOString() }, 
-            { id: 8, name: "Maria", rating: 4, text: "Buenos precios, fácil de pagar.", timestamp: new Date(Date.now() - 345600000).toISOString() },
         ];
-        
-        let comments = []; // Comentarios dinámicos del usuario
 
         // Función simple para mantener la visualización de la media estática
         function updateDisplayCounts() {
-             document.getElementById('averageRating').textContent = `4.5 ★★★★★`;
-             document.getElementById('totalCommentsCount').textContent = `(10,567 comentarios)`;
+             // El totalCommentsCount ya se actualiza en initializeAndIncrementStats
+             document.getElementById('averageRating').textContent = `4.5 ★★★★★`; 
         }
         
         // Función para obtener el tiempo transcurrido (más limpio)
@@ -581,15 +643,21 @@
         }
 
 
-        // Función para renderizar los comentarios (AHORA MÁS PEQUEÑOS)
+        // Función para renderizar los comentarios (MÁS PEQUEÑOS)
         function displayComments() {
-            let allComments = [...initialComments, ...comments];
+            // Obtener los comentarios dinámicos generados
+            const dynamicComments = initializeAndIncrementStats();
+            
+            // Combinar estáticos, dinámicos y los ingresados por el usuario
+            let userComments = JSON.parse(localStorage.getItem('roblox_comments') || '[]');
+            
+            let allComments = [...userComments, ...dynamicComments, ...initialComments];
 
             // Ordenar por fecha (más reciente primero)
             allComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-            // Mostrar solo los 8 más recientes (o menos si hay pocos)
-            const commentsToDisplay = allComments.slice(0, 8); 
+            // Mostrar solo los 10 más recientes (para no saturar)
+            const commentsToDisplay = allComments.slice(0, 10); 
 
             commentsList.innerHTML = '';
             commentsToDisplay.forEach(comment => {
@@ -601,29 +669,22 @@
                 
                 commentElement.innerHTML = `
                     <div class="flex items-center mb-1">
-                        <span class="text-yellow-400 text-sm">${stars}</span> <span class="ml-3 text-xs font-semibold text-gray-200">${comment.name || 'Anónimo'}</span> <span class="ml-auto text-xs text-gray-400">${getTimeAgo(comment.timestamp)}</span>
+                        <span class="text-yellow-400 text-sm">${stars}</span> 
+                        <span class="ml-3 text-xs font-semibold text-gray-200">${comment.name || 'Anónimo'}</span> 
+                        <span class="ml-auto text-xs text-gray-400">${getTimeAgo(comment.timestamp)}</span>
                     </div>
-                    <p class="text-gray-400 text-sm">${comment.text}</p> `;
+                    <p class="text-gray-400 text-sm">${comment.text}</p>
+                `;
                 commentsList.appendChild(commentElement);
             });
             
-            updateDisplayCounts();
+            updateDisplayCounts(); // Actualizar la media estática (4.5)
         }
-
-        // Cargar y mostrar comentarios, y actualizar el contador de visitas al iniciar
-        document.addEventListener('DOMContentLoaded', () => {
-             const storedComments = localStorage.getItem('roblox_comments');
-             if (storedComments) {
-                 comments = JSON.parse(storedComments);
-             }
-             displayComments();
-             initializeVisitCounter(); // Inicializar contador
-        });
 
         commentForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const name = document.getElementById('commentName').value.trim() || 'Anónimo'; // Si no pone nombre, es Anónimo
+            const name = document.getElementById('commentName').value.trim() || 'Anónimo'; 
             const ratingInput = document.querySelector('input[name="rating"]:checked');
             
             if (!ratingInput) {
@@ -646,9 +707,10 @@
                 text: text,
                 timestamp: new Date().toISOString()
             };
-
-            comments.push(newComment);
-            localStorage.setItem('roblox_comments', JSON.stringify(comments));
+            
+            let userComments = JSON.parse(localStorage.getItem('roblox_comments') || '[]');
+            userComments.unshift(newComment);
+            localStorage.setItem('roblox_comments', JSON.stringify(userComments));
 
             // Limpiar el formulario
             commentForm.reset();
@@ -658,6 +720,10 @@
 
             displayComments(); // Actualizar la lista
         });
+
+        // Cargar y mostrar comentarios, e inicializar stats al iniciar
+        document.addEventListener('DOMContentLoaded', displayComments);
+
     </script>
 </body>
 </html>

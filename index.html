@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://i.postimg.cc/nCJTtR4q/unnamed-1.png" type="image/png">
     <title>EDA</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TU_ID_DE_MEDICIÓN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'TU_ID_DE_MEDICIÓN');
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilos personalizados para el fondo de cielo estrellado */
         body {
             background-color: #0d0d1a;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             animation: fadeIn 2s ease-in-out;
-            /* Scrollbar personalizado para un mejor diseño */
             scrollbar-width: thin;
             scrollbar-color: #A855F7 #1F2937;
         }
@@ -53,9 +59,6 @@
             to { background-position: 100% 100%; }
         }
         
-        /* === ESTILOS CSS ADICIONALES === */
-
-        /* 1. Animación de Brillo (Glow) para el Título */
         @keyframes glow {
             0% { text-shadow: 0 0 5px rgba(255, 105, 180, 0.4); }
             50% { text-shadow: 0 0 10px rgba(168, 85, 247, 0.6), 0 0 15px rgba(255, 105, 180, 0.4); }
@@ -65,33 +68,43 @@
             animation: glow 3s ease-in-out infinite alternate;
         }
 
-        /* 2. Efecto Hover de Neón en el Contenedor Principal */
         .container {
             transition: box-shadow 0.5s ease-in-out;
         }
         .container:hover {
             box-shadow: 0 0 50px rgba(168, 85, 247, 0.3), 0 0 80px rgba(255, 105, 180, 0.1);
         }
+        
+        .product-card-glow {
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+        }
 
-        /* 3. Animación de Pulso para los Botones de Pagar */
+        .product-card-glow:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 0 20px rgba(255, 105, 180, 0.6), 
+                0 0 40px rgba(168, 85, 247, 0.4),  
+                0 10px 15px rgba(0, 0, 0, 0.5);   
+            border-color: #EC4899; 
+        }
+
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
             }
             50% {
                 transform: scale(1.05);
-                box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.4); /* Sombra verde */
+                box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.4);
             }
         }
         .pay-button {
             animation: pulse 2s infinite ease-in-out;
         }
-        /* Detener el pulso al pasar el mouse para una interacción más clara */
         .pay-button:hover {
             animation: none;
         }
         
-        /* Estilos para el modal de la imagen ampliada */
         .image-modal {
             display: none;
             position: fixed;
@@ -152,16 +165,14 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
         
-        /* Estilos y efecto hover para las tarjetas de comentario */
         .comment-card {
             transition: all 0.2s ease-in-out;
         }
         .comment-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4); /* Sombra morada de elevación */
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
         }
         
-        /* Estilos para la calificación con estrellas */
         .star-rating {
             display: flex;
             justify-content: flex-start;
@@ -225,11 +236,11 @@
                 pago corespondiente y entrega segura <span class="text-blue-400"></span>
             </p>
         </section>
-
+        
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            <div id="product-001" class="relative block 
+            <div id="product-001" class="relative block product-card-glow
                 bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
-                 border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+                 border-2 border-transparent">
                 <div class="product-number">001</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/RZTCbQ18/Imagen-de-Whats-App-2025-09-18-a-las-12-46-12-2fc1a47e.jpg" alt="Imagen de la cuenta 1" class="w-full h-full object-cover rounded-xl cursor-pointer" 
@@ -244,7 +255,7 @@
                 </div>
             </div>
 
-            <div id="product-002" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-002" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">002</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/cJXH6MrY/Imagen-de-Whats-App-2025-09-18-a-las-12-46-11-cb8cf4ff.jpg" border="0" alt="Imagen de la 
@@ -259,7 +270,7 @@
                 </div>
             </div>
 
-            <div id="product-003" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-003" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">003</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/mZXFD40k/Imagen-de-Whats-App-2025-09-18-a-las-12-46-11-17daf3cb.jpg" alt="Imagen de la cuenta 
@@ -275,7 +286,7 @@
                 </div>
             </div>
 
-            <div id="product-004" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-004" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">004</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/mkKb8FSp/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-2894a98c.jpg" alt="Imagen de la cuenta 
@@ -291,7 +302,7 @@
                 </div>
             </div>
 
-            <div id="product-005" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-005" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">005</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/SNnmXVG6/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-5eca640d.jpg" alt="Imagen de la cuenta 
@@ -307,7 +318,7 @@
                 </div>
             </div>
 
-            <div id="product-006" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-006" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">006</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/KY2bHbhf/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-340de29b.jpg" alt="Imagen de la cuenta 
@@ -323,7 +334,7 @@
                 </div>
             </div>
             
-            <div id="product-007" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-007" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">007</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/m2n6dWFn/Imagen-de-Whats-App-2025-09-21-a-las-11-01-29-ffd43986.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/m2n6dWFn/Imagen-de-Whats-App-2025-09-21-a-las-11-01-29-ffd43986.jpg', event)">
@@ -337,7 +348,7 @@
                 </div>
             </div>
             
-            <div id="product-008" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-008" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">008</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/XvS1bKLc/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-9f47eb8a.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/XvS1bKLc/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-9f47eb8a.jpg', event)">
@@ -351,7 +362,7 @@
                 </div>
             </div>
             
-            <div id="product-009" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-009" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">009</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/3wXSJybM/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-e3a74923.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/3wXSJybM/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-e3a74923.jpg', event)">
@@ -365,7 +376,7 @@
                 </div>
             </div>
             
-            <div id="product-010" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-010" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">010</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/N0w7wCRt/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-2761f6e4.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/N0w7wCRt/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-2761f6e4.jpg', event)">
@@ -379,7 +390,7 @@
                 </div>
             </div>
             
-            <div id="product-011" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-011" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">011</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/BvTWqzyZ/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-e72b14fd.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/BvTWqzyZ/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-e72b14fd.jpg', event)">
@@ -393,7 +404,7 @@
                 </div>
             </div>
             
-            <div id="product-012" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-012" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">012</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/nLH2Dwr3/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-f180e135.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/nLH2Dwr3/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-f180e135.jpg', event)">
@@ -407,7 +418,7 @@
                 </div>
             </div>
             
-            <div id="product-013" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-013" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">013</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/nrH9d68Y/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-2a78690c.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/nrH9d68Y/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-2a78690c.jpg', event)">
@@ -421,7 +432,7 @@
                 </div>
             </div>
             
-            <div id="product-014" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-014" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">014</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://placehold.co/400x300/F0F0F0/000000?text=Cuenta+Nueva" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://placehold.co/400x300/F0F0F0/000000?text=Cuenta+Nueva', event)">
@@ -435,7 +446,7 @@
                 </div>
             </div>
             
-            <div id="product-015" class="relative block bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent hover:border-pink-500 transition-all duration-300">
+            <div id="product-015" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
                 <div class="product-number">015</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://placehold.co/400x300/F0F0F0/000000?text=Cuenta+Nueva" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://placehold.co/400x300/F0F0F0/000000?text=Cuenta+Nueva', event)">
@@ -516,15 +527,14 @@
     </div>
 
     <script>
-        // --- CONFIGURACIÓN DE LAS REGLAS DINÁMICAS ---
+        // === CÓDIGO DEL CONTADOR DE VISITAS SIMULADO DESACTIVADO ===
+        // Para usar Google Analytics real, mantenemos solo las variables de comentarios
         const UPDATE_INTERVAL_MS = 15 * 60 * 1000;
-        // 15 minutos en milisegundos
         const VISIT_INCREMENT_PER_INTERVAL = 5;
         const COMMENT_COUNT_INCREMENT_PER_INTERVAL = 2;
-        const INITIAL_VISIT_COUNT = 934;
-        const INITIAL_STATIC_COMMENT_COUNT = 10567; // Base count for display
+        const INITIAL_VISIT_COUNT = 934; 
+        const INITIAL_STATIC_COMMENT_COUNT = 10567;
 
-        // Nuevos comentarios "menos perfectos" para simular realismo
         const newRealisticComments = [
             { name: "Carlos S.", rating: 3, text: "La cuenta es buena, pero la **entrega tardó casi 2 horas** después del pago. ¡Mejorar eso!", isComplaint: true },
             { name: "Luisa A.", rating: 4, text: "Todo bien, solo **falta más stock** de cuentas baratas.", isComplaint: false },
@@ -534,7 +544,8 @@
                 isComplaint: true },
             { name: "Cliente X", rating: 5, text: "¡Súper rápido y seguro! Ya tengo mi cuenta.", isComplaint: false },
         ];
-        // Lógica de JavaScript para el Modal de Imagen
+        // =========================================================
+
         function showImageModal(imageSrc, event) {
             if (event.target.tagName.toLowerCase() === 'button' || event.target.tagName.toLowerCase() === 'a') {
                 return;
@@ -553,7 +564,6 @@
             }
         }
 
-        // Lógica de JavaScript para el Botón de Pagar (WhatsApp)
         function payWithWhatsApp(productNumber) {
             const productElement = document.getElementById(`product-${productNumber}`);
             const productName = productElement.querySelector('.product-number').textContent;
@@ -565,31 +575,30 @@
             window.open(whatsappURL, '_blank');
         }
 
-        // Lógica para el Contador de Visitas y Comentarios Dinámicos (AHORA CON SINCRONIZACIÓN POR TIEMPO)
         function initializeAndIncrementStats() {
+            // Lógica de comentarios (se mantiene)
             const now = Date.now();
             let lastUpdate = parseInt(localStorage.getItem('roblox_last_update') || now, 10);
-            let baseVisits = parseInt(localStorage.getItem('roblox_visit_count') || INITIAL_VISIT_COUNT, 10);
+            let baseVisits = INITIAL_VISIT_COUNT; // Valor estático para dejar el conteo a Analytics
             let baseTotalComments = parseInt(localStorage.getItem('roblox_total_comment_count') || INITIAL_STATIC_COMMENT_COUNT, 10);
             let dynamicComments = JSON.parse(localStorage.getItem('roblox_dynamic_comments') || '[]');
-            // 1. Calcular el tiempo transcurrido y los intervalos
+            
             const timeElapsed = now - lastUpdate;
             const intervalsPassed = Math.floor(timeElapsed / UPDATE_INTERVAL_MS);
 
             if (intervalsPassed > 0) {
-                // 2. Incrementar visitas y total de comentarios
-                baseVisits += intervalsPassed * VISIT_INCREMENT_PER_INTERVAL;
+                
+                // baseVisits NO SE INCREMENTA AQUÍ, SE DEJA A GOOGLE ANALYTICS
                 baseTotalComments += intervalsPassed * COMMENT_COUNT_INCREMENT_PER_INTERVAL;
 
-                // 3. Generar y añadir nuevos comentarios 'realistas'
                 for (let i = 0; i < intervalsPassed; i++) {
                     const newCommentTemplate = newRealisticComments[Math.floor(Math.random() * newRealisticComments.length)];
-                    // Variar la calificación
+                    
                     let finalRating = newCommentTemplate.rating;
                     if (newCommentTemplate.isComplaint) {
-                        // Las quejas varían entre 2 y 4 estrellas
+                        
                         finalRating = Math.floor(Math.random() * 3) + 2;
-                        // Rango [2, 4]
+                        
                     }
 
                     const newComment = {
@@ -597,62 +606,49 @@
                         name: newCommentTemplate.name,
                         rating: finalRating,
                         text: newCommentTemplate.text,
-                        // Simular el tiempo de publicación real
+                        
                         timestamp: new Date(lastUpdate + ((i + 1) * UPDATE_INTERVAL_MS)).toISOString()
                     };
                     dynamicComments.unshift(newComment); 
                 }
                 
-                // Limitar la cantidad de comentarios dinámicos guardados (p. ej., a 50)
                 if (dynamicComments.length > 50) {
                     dynamicComments = dynamicComments.slice(0, 50);
                 }
             }
             
-            // 4. Asegurar que el contador de visitas se incremente por la visita actual (si no se hizo por intervalo)
-            // Se asume que el incremento de 1 por visita ya está incluido en los cálculos de intervalos si la página estuvo cerrada.
-            // Si no hubo intervalos (página recién abierta), incrementamos 1 por la visita.
-            if (intervalsPassed === 0) {
-                 baseVisits += 1;
-            }
+            
+            // baseVisits NO SE MODIFICA AQUÍ.
+            
 
-            // 5. Guardar el nuevo estado
-            localStorage.setItem('roblox_visit_count', baseVisits);
+            
             localStorage.setItem('roblox_total_comment_count', baseTotalComments);
             localStorage.setItem('roblox_dynamic_comments', JSON.stringify(dynamicComments));
-            localStorage.setItem('roblox_last_update', now); // Guarda el nuevo tiempo de la última actualización
+            localStorage.setItem('roblox_last_update', now);
 
-            // 6. Actualizar la visualización
-            document.getElementById('visitCount').textContent = baseVisits.toLocaleString();
+            
+            document.getElementById('visitCount').textContent = INITIAL_VISIT_COUNT.toLocaleString(); 
             document.getElementById('totalCommentsCount').textContent = `(${baseTotalComments.toLocaleString()} comentarios)`;
 
-            // Devolver los comentarios dinámicos para el display
+            
             return dynamicComments;
         }
 
-        // Lógica de JavaScript para la Gestión de Comentarios
         const commentsList = document.getElementById('commentsList');
         const commentForm = document.getElementById('commentForm');
         
-        // Comentarios iniciales (Estáticos, se mezclan con los dinámicos)
         let initialComments = [
             { id: 1, name: "Lucas", rating: 5, text: "¡Súper **seguro** y la entrega fue inmediata! Los **precios** son lo mejor, muy **accesibles** para la calidad de las cuentas. ¡Recomendado 100%!", timestamp: new Date(Date.now() - 3600000).toISOString() }, 
-            { id: 2, name: "Sofía", rating: 5, text: "Tenía dudas, pero esta página es totalmente **segura**. Pude 
-                comprar sin problemas y el precio es muy económico. ¡Mi nueva tienda de confianza!", timestamp: new Date(Date.now() - 7200000).toISOString() }, 
+            { id: 2, name: "Sofía", rating: 5, text: "Tenía dudas, pero esta página es totalmente **segura**. Pude comprar sin problemas y el precio es muy económico. ¡Mi nueva tienda de confianza!", timestamp: new Date(Date.now() - 7200000).toISOString() }, 
             { id: 3, name: "Andrés", rating: 5, text: "La atención por WhatsApp es rápida y el código me funcionó al instante. ¡Gracias!", timestamp: new Date(Date.now() - 10800000).toISOString() }, 
-            { id: 4, name: "Valeria", rating: 4, text: "Buena variedad de cuentas. El precio es justo, aunque la imagen tardó un poco en cargar.", timestamp: new Date(Date.now() - 
-                14400000).toISOString() }, 
-            { id: 5, name: "Diego", rating: 4, text: "Todo bien, la cuenta llegó rápido.
-                Podrían mejorar el diseño del chat.", timestamp: new Date(Date.now() - 86400000).toISOString() }, 
+            { id: 4, name: "Valeria", rating: 4, text: "Buena variedad de cuentas. El precio es justo, aunque la imagen tardó un poco en cargar.", timestamp: new Date(Date.now() - 14400000).toISOString() }, 
+            { id: 5, name: "Diego", rating: 4, text: "Todo bien, la cuenta llegó rápido. Podrían mejorar el diseño del chat.", timestamp: new Date(Date.now() - 86400000).toISOString() }, 
         ];
 
-        // Función simple para mantener la visualización de la media estática
         function updateDisplayCounts() {
-             // El totalCommentsCount ya se actualiza en initializeAndIncrementStats
              document.getElementById('averageRating').textContent = `4.5 ★★★★★`; 
         }
        
-        // Función para obtener el tiempo transcurrido (más limpio)
         function getTimeAgo(timestamp) {
             const diff = Date.now() - new Date(timestamp).getTime();
             const seconds = Math.floor(diff / 1000);
@@ -669,24 +665,23 @@
         }
 
 
-        // Función para renderizar los comentarios (MÁS PEQUEÑOS)
         function displayComments() {
-            // Obtener los comentarios dinámicos generados
+            
             const dynamicComments = initializeAndIncrementStats();
-            // Combinar estáticos, dinámicos y los ingresados por el usuario
+            
             let userComments = JSON.parse(localStorage.getItem('roblox_comments') || '[]');
             let allComments = [...userComments, ...dynamicComments, ...initialComments];
 
-            // Ordenar por fecha (más reciente primero)
+            
             allComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            // Mostrar solo los 10 más recientes (para no saturar)
+            
             const commentsToDisplay = allComments.slice(0, 10);
             commentsList.innerHTML = '';
             commentsToDisplay.forEach(comment => {
                 const commentElement = document.createElement('div');
                 commentElement.className = 'comment-card p-4 bg-gray-700 rounded-lg shadow-md border border-gray-600';
 
-                // Generar estrellas
+                
                 const stars = '★'.repeat(comment.rating) + '☆'.repeat(5 - comment.rating);
            
                 commentElement.innerHTML = `
@@ -703,7 +698,7 @@
             });
             
             updateDisplayCounts();
-            // Actualizar la media estática (4.5)
+            
         }
 
         commentForm.addEventListener('submit', function(event) {
@@ -736,14 +731,14 @@
             userComments.unshift(newComment);
             localStorage.setItem('roblox_comments', JSON.stringify(userComments));
 
-            // Limpiar el formulario
+            
             commentForm.reset();
             document.querySelectorAll('.star-rating input[name="rating"]').forEach(input => {
                 input.checked = false;
             });
-            displayComments(); // Actualizar la lista
+            displayComments(); 
         });
-        // Cargar y mostrar comentarios, e inicializar stats al iniciar
+        
         document.addEventListener('DOMContentLoaded', displayComments);
 
     </script>

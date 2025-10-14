@@ -6,68 +6,115 @@
     <link rel="icon" href="https://i.postimg.cc/nCJTtR4q/unnamed-1.png" type="image/png">
     <title>EDA</title>
 
-    <!-- Google Analytics - Mantener para referencia -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=TU_ID_DE_MEDICIÓN"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer ||
+[];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'TU_ID_DE_MEDICIÓN');
-    </script>
+</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Estilos Base y Animaciones */
         body {
-            background-color: #091a2a; /* Fondo Gris Oscuro/Negro Azulado */
+            background-color: #091a2a;
+/* Fondo Gris Oscuro/Negro Azulado */
             color: #ffffff;
-            font-family: 'Inter', sans-serif;
+font-family: 'Inter', sans-serif;
             animation: fadeIn 2s ease-in-out;
             scrollbar-width: thin;
-            scrollbar-color: #00BCD4 #1F2937; /* Scrollbar Cían */
+            scrollbar-color: #00BCD4 #1F2937;
+/* Scrollbar Cían */
         }
         .starry-background {
             background-image:
                 radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 80px 150px, #ddd, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 100px 200px, #fff, rgba(0,0,0,0)),
+  
+               radial-gradient(2px 2px at 100px 200px, #fff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 120px 250px, #eee, rgba(0,0,0,0));
-            background-size: 150px 150px;
+background-size: 150px 150px;
             animation: move-background 50s linear infinite;
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes move-background { from { background-position: 0 0; } to { background-position: 100% 100%; } }
+        @keyframes fadeIn { from { opacity: 0;
+} to { opacity: 1; } }
+        @keyframes move-background { from { background-position: 0 0;
+} to { background-position: 100% 100%; } }
         @keyframes glow {
-            0% { text-shadow: 0 0 5px rgba(0, 188, 212, 0.4); }
-            50% { text-shadow: 0 0 10px rgba(0, 188, 212, 0.6), 0 0 15px rgba(255, 255, 255, 0.4); }
-            100% { text-shadow: 0 0 5px rgba(0, 188, 212, 0.4); }
+            0% { text-shadow: 0 0 5px rgba(0, 188, 212, 0.4);
+}
+            50% { text-shadow: 0 0 10px rgba(0, 188, 212, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
+}
+            100% { text-shadow: 0 0 5px rgba(0, 188, 212, 0.4);
+}
         }
-        .header-title { animation: glow 3s ease-in-out infinite alternate; }
-        .product-card-glow { transition: all 0.4s ease-in-out; box-shadow: 0 0 10px rgba(0, 188, 212, 0.1); }
-        .product-card-glow:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 20px rgba(0, 188, 212, 0.6), 0 0 40px rgba(0, 188, 212, 0.4), 0 10px 15px rgba(0, 0, 0, 0.5); border-color: #00BCD4; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.4); } }
-        .pay-button { animation: pulse 2s infinite ease-in-out; }
-        .pay-button:hover { animation: none; }
+        .header-title { animation: glow 3s ease-in-out infinite alternate;
+}
+        .product-card-glow { transition: all 0.4s ease-in-out;
+box-shadow: 0 0 10px rgba(0, 188, 212, 0.1); }
+        .product-card-glow:hover { transform: translateY(-8px) scale(1.02);
+box-shadow: 0 0 20px rgba(0, 188, 212, 0.6), 0 0 40px rgba(0, 188, 212, 0.4), 0 10px 15px rgba(0, 0, 0, 0.5);
+border-color: #00BCD4; }
+        @keyframes pulse { 0%, 100% { transform: scale(1);
+} 50% { transform: scale(1.05); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.4);
+} }
+        .pay-button { animation: pulse 2s infinite ease-in-out;
+}
+        .pay-button:hover { animation: none;
+}
 
         /* Estilos del Modal de Imagen */
-        .image-modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
-        .image-modal-content { max-width: 90vw; max-height: 90vh; display: block; border-radius: 10px; }
-        .product-number { position: absolute; top: 1rem; left: 1rem; background-color: #00BCD4; color: #fff; padding: 0.25rem 0.5rem; border-radius: 0.5rem; font-weight: bold; font-size: 0.875rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
+        .image-modal { display: none;
+position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center;
+align-items: center; }
+        .image-modal-content { max-width: 90vw; max-height: 90vh; display: block; border-radius: 10px;
+}
+        .product-number { position: absolute; top: 1rem; left: 1rem; background-color: #00BCD4; color: #fff;
+padding: 0.25rem 0.5rem; border-radius: 0.5rem; font-weight: bold; font-size: 0.875rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
         
         /* Colores de pago */
-        .yape-color { color: #8d45aa; } /* Morado */
-        .plin-color { color: #f8941c; } /* Naranja */
-        .paypal-color { color: #0070ba; } /* Azul PayPal */
+        .yape-color { color: #8d45aa;
+} /* Morado */
+        .plin-color { color: #f8941c;
+} /* Naranja */
+        .paypal-color { color: #0070ba;
+} /* Azul PayPal */
 
         /* Estilo para el modal de mensaje/error (en lugar de alert) */
         .message-box {
-            position: fixed; top: 20px; right: 20px; z-index: 200;
+            position: fixed;
+top: 20px; right: 20px; z-index: 200;
             padding: 15px 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+transition: transform 0.3s ease-out, opacity 0.3s ease-out;
             transform: translateY(-100%); opacity: 0;
+}
+        .message-box.show { transform: translateY(0); opacity: 1;
+}
+
+        /* Estilo para el botón de cerrar del modal de imagen */
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px; /* Aumentado de tamaño */
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 101; /* Asegura que esté sobre el fondo semi-transparente */
+            padding: 0 10px; /* Padding para hacer más fácil el clic */
         }
-        .message-box.show { transform: translateY(0); opacity: 1; }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -80,28 +127,36 @@
                 Venta de Cuentas Roblox
             </h1>
 
-            <p class="text-xl md:text-2xl font-light text-gray-300">
+            
+ <p class="text-xl md:text-2xl font-light text-gray-300">
                 ¡Con los mejores Brainrot del juego!
-            </p>
+</p>
 
-            <!-- CONTADOR DE VISITAS -->
             <div class="mt-4 p-2 inline-block bg-gray-700 bg-opacity-70 rounded-lg shadow-inner">
-                <span class="text-sm font-semibold text-cyan-400">Visitas Totales: </span>
-                <span id="visitorCount" class="text-lg font-bold text-white">867</span>
+                <span class="text-sm font-semibold text-cyan-400 mr-4">Síguenos:</span>
+                <a href="https://www.tiktok.com/@progrusser?_t=ZS-90M6EK8zW8A&_r=1" target="_blank" class="text-white hover:text-cyan-400 transition-colors mx-2">
+                    TikTok
+                </a>
+                <span class="text-sm font-semibold text-cyan-400">|</span>
+                <a href="https://www.roblox.com/share?code=6916728eff593a45a873a578b4f91041&type=Profile&source=ProfileShare&stamp=1760458072253" target="_blank" class="text-white hover:text-cyan-400 transition-colors mx-2">
+                    Roblox Profile
+                </a>
             </div>
-            <!------------------------>
-        </header>
+            
+            </header>
 
         <section class="bg-gray-800 bg-opacity-70 p-6 md:p-8 rounded-2xl mb-8 shadow-inner">
             <div class="text-center mb-4">
                  <p class="text-xl font-semibold text-cyan-400">Métodos de Pago:</p>
             </div>
             <div class="flex flex-wrap items-center justify-center space-x-4 space-y-2 md:space-y-0 text-3xl font-bold">
+        
                 <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md">
                     <span class="yape-color">Yape</span>
                 </div>
                 <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md">
                     <span class="plin-color">Plin</span>
+        
                 </div>
                 <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md">
                     <span class="paypal-color">PayPal</span>
@@ -109,275 +164,305 @@
             </div>
 
             <div class="mt-8 text-center">
+        
                  <p class="text-lg font-semibold text-cyan-400">Contacto y Compras Directas:</p>
                 <a href="https://wa.me/51900779111?text=Hola,%20estoy%20interesado%20en%20comprar%20una%20cuenta%20de%20Roblox."
-                    target="_blank" class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-lg">
+target="_blank" class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-lg">
                     Escríbenos por WhatsApp
                 </a>
             </div>
             <p class="mt-6 text-center text-sm text-gray-400">
                 Pago correspondiente y entrega segura.
-            </p>
+</p>
         </section>
 
-        <!-- Productos -->
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            <!-- PRODUCTO 001 -->
             <div id="product-001" class="relative block product-card-glow
                 bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl
-                 border-2 border-transparent">
+                 
+border-2 border-transparent">
                 <div class="product-number">001</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/RZTCbQ18/Imagen-de-Whats-App-2025-09-18-a-las-12-46-12-2fc1a47e.jpg" alt="Imagen de la cuenta 1" class="w-full h-full object-cover rounded-xl cursor-pointer"
                     onclick="showImageModal('https://i.postimg.cc/RZTCbQ18/Imagen-de-Whats-App-2025-09-18-a-las-12-46-12-2fc1a47e.jpg', event)">
-                </div>
-                <!-- Contenedor de Descripción -->
+     
+               </div>
                 <p id="description-001" class="text-sm text-gray-400 mb-4 h-12">
-                    Una cuenta con un toque misterioso. Ideal para explorar mundos oscuros.
+                    Una cuenta con un toque misterioso.
+Ideal para explorar mundos oscuros.
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 5.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+5.00</span>
                     <button onclick="payWithWhatsApp('001', '5.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 002 -->
-            <div id="product-002" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-002" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">002</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/cJXH6MrY/Imagen-de-Whats-App-2025-09-18-a-las-12-46-11-cb8cf4ff.jpg" border="0" alt="Imagen de la cuenta 2" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/cJXH6MrY/Imagen-de-Whats-App-2025-09-18-a-las-12-46-11-cb8cf4ff.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-002" class="text-sm text-gray-400 mb-4 h-12">
-                    Perfecta para jugadores que buscan una cuenta sencilla y funcional. ¡Lista para la acción!
+       
+                 <p id="description-002" class="text-sm text-gray-400 mb-4 h-12">
+                    Perfecta para jugadores que buscan una cuenta sencilla y funcional.
+¡Lista para la acción!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 3.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+3.00</span>
                     <button onclick="payWithWhatsApp('002', '3.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 003 -->
-            <div id="product-003" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-003" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">003</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/mZXFD40k/Imagen-de-Whats-App-2025-09-18-a-las-12-46-11-17daf3cb.jpg" alt="Imagen de la cuenta 3"
                         class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/mZXFD40k/Imagen-de-Whats-App-2025-09-18-a-las-12-46-11-17daf3cb.jpg', event)">
-                </div>
-                <!-- Contenedor de Descripción -->
+ 
+               </div>
                 <p id="description-003" class="text-sm text-gray-400 mb-4 h-12">
-                    Una cuenta épica con ítems raros. ¡Sé la envidia de tus amigos!
+                    Una cuenta épica con ítems raros.
+¡Sé la envidia de tus amigos!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 17.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+14.50</span>
                     <button onclick="payWithWhatsApp('003', '17.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 004 -->
-            <div id="product-004" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-004" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">004</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/mkKb8FSp/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-2894a98c.jpg" alt="Imagen de la cuenta 4" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/mkKb8FSp/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-2894a98c.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-004" class="text-sm text-gray-400 mb-4 h-12">
-                    Cuenta balanceada con un buen inventario. Lista para cualquier aventura.
+        
+                 <p id="description-004" class="text-sm text-gray-400 mb-4 h-12">
+                    Cuenta balanceada con un buen inventario.
+Lista para cualquier aventura.
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 11.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+6.00</span>
                     <button onclick="payWithWhatsApp('004', '11.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 005 -->
-            <div id="product-005" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-005" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">005</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/SNnmXVG6/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-5eca640d.jpg" alt="Imagen de la cuenta 5" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/SNnmXVG6/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-5eca640d.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-005" class="text-sm text-gray-400 mb-4 h-12">
-                    Ideal para coleccionistas. ¡Muchos ítems únicos y exclusivos!
+        
+                 <p id="description-005" class="text-sm text-gray-400 mb-4 h-12">
+                    Ideal para coleccionistas.
+¡Muchos ítems únicos y exclusivos!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 9.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+6.00</span>
                     <button onclick="payWithWhatsApp('005', '9.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 006 -->
-            <div id="product-006" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-006" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">006</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/KY2bHbhf/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-340de29b.jpg" alt="Imagen de la cuenta 6" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/KY2bHbhf/Imagen-de-Whats-App-2025-09-21-a-las-09-16-11-340de29b.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-006" class="text-sm text-gray-400 mb-4 h-12">
-                    Una cuenta con un historial de victorias. ¡Demuestra tu habilidad!
+        
+                 <p id="description-006" class="text-sm text-gray-400 mb-4 h-12">
+                    Una cuenta con un historial de victorias.
+¡Demuestra tu habilidad!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 13.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+4.00</span>
                     <button onclick="payWithWhatsApp('006', '13.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 007 -->
-            <div id="product-007" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-007" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">007</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/m2n6dWFn/Imagen-de-Whats-App-2025-09-21-a-las-11-01-29-ffd43986.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/m2n6dWFn/Imagen-de-Whats-App-2025-09-21-a-las-11-01-29-ffd43986.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-007" class="text-sm text-gray-400 mb-4 h-12">
-                    Una cuenta con estilo propio. ¡Destaca en cualquier juego!
+                    Una cuenta con estilo propio.
+¡Destaca en cualquier juego!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 14.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+11.50</span>
                     <button onclick="payWithWhatsApp('007', '14.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 008 -->
-            <div id="product-008" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-008" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">008</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/XvS1bKLc/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-9f47eb8a.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/XvS1bKLc/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-9f47eb8a.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-008" class="text-sm text-gray-400 mb-4 h-12">
-                    Cargada de Robux y potencial. ¡Toma el control del juego!
+                    Cargada de Robux y potencial.
+¡Toma el control del juego!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 21.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+15.00</span>
                     <button onclick="payWithWhatsApp('008', '21.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 009 -->
-            <div id="product-009" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-009" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">009</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/3wXSJybM/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-e3a74923.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/3wXSJybM/Imagen-de-Whats-App-2025-09-21-a-las-11-01-28-e3a74923.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-009" class="text-sm text-gray-400 mb-4 h-12">
-                    Para aquellos que aprecian un avatar clásico. ¡Simple, pero efectiva!
+                    Para aquellos que aprecian un avatar clásico.
+¡Simple, pero efectiva!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 12.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+5.00</span>
                     <button onclick="payWithWhatsApp('009', '12.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 010 -->
-            <div id="product-010" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-010" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">010</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/N0w7wCRt/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-2761f6e4.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/N0w7wCRt/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-2761f6e4.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-010" class="text-sm text-gray-400 mb-4 h-12">
                     Una cuenta base excelente para empezar o regalar.
-                </p>
+</p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 7.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+7.00</span>
                     <button onclick="payWithWhatsApp('010', '7.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 011 -->
-            <div id="product-011" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-011" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">011</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/BvTWqzyZ/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-e72b14fd.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/BvTWqzyZ/Imagen-de-Whats-App-2025-10-01-a-las-11-12-31-e72b14fd.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-011" class="text-sm text-gray-400 mb-4 h-12">
-                    Cuenta con skins y accesorios llamativos. ¡Perfecta para el troleo!
+                    Cuenta con skins y accesorios llamativos.
+¡Perfecta para el troleo!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 8.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+6.00</span>
                     <button onclick="payWithWhatsApp('011', '8.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 012 -->
-            <div id="product-012" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-012" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">012</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/nLH2Dwr3/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-f180e135.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/nLH2Dwr3/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-f180e135.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-012" class="text-sm text-gray-400 mb-4 h-12">
-                    La joya de la corona. ¡Una cuenta de alto nivel que lo tiene todo!
+                    La joya de la corona.
+¡Una cuenta de alto nivel que lo tiene todo!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 25.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+19.00</span>
                     <button onclick="payWithWhatsApp('012', '25.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 013 -->
-            <div id="product-013" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-013" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">013</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
                     <img src="https://i.postimg.cc/nrH9d68Y/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-2a78690c.jpg" alt="Imagen de la cuenta" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/nrH9d68Y/Imagen-de-Whats-App-2025-10-01-a-las-11-12-30-2a78690c.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
+         
                 <p id="description-013" class="text-sm text-gray-400 mb-4 h-12">
-                    Con un avatar que grita "soy el mejor". ¡Demuéstralo en el juego!
+                    Con un avatar que grita "soy el mejor".
+¡Demuéstralo en el juego!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 14.50</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+10.50</span>
                     <button onclick="payWithWhatsApp('013', '14.50')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 014 -->
-            <div id="product-014" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-014" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">014</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
-                    <img src="https://i.postimg.cc/qgLrGxXh/Imagen-de-Whats-App-2025-10-06-a-las-15-40-07-429ddd13.jpg" alt="Imagen de la cuenta 14" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/qgLrGxXh/Imagen-de-Whats-App-2025-10-06-a-las-15-40-07-429ddd13.jpg', event)">
+                    <img src="https://i.postimg.cc/d1yxBCvJ/Imagen-de-Whats-App-2025-10-06-a-las-15-40-07-429ddd13.jpg" alt="Imagen de la cuenta 14" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/d1yxBCvJ/Imagen-de-Whats-App-2025-10-06-a-las-15-40-07-429ddd13.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-014" class="text-sm text-gray-400 mb-4 h-12">
-                    Avatar que evoca la nostalgia de los mejores tiempos. ¡Clásico y cool!
+        
+                 <p id="description-014" class="text-sm text-gray-400 mb-4 h-12">
+                    Avatar que evoca la nostalgia de los mejores tiempos.
+¡Clásico y cool!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 6.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+6.00</span>
                     <button onclick="payWithWhatsApp('014', '6.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- PRODUCTO 015 -->
-            <div id="product-015" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-015" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl 
+border-2 border-transparent">
                 <div class="product-number">015</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
-                    <img src="https://i.postimg.cc/QVbDqJk8/Imagen-de-Whats-App-2025-10-06-a-las-15-42-42-4f0860ec.jpg" alt="Imagen de la cuenta 15" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/QVbDqJk8/Imagen-de-Whats-App-2025-10-06-a-las-15-42-42-4f0860ec.jpg', event)">
+                    <img src="https://i.postimg.cc/qMDBWfyR/Imagen-de-Whats-App-2025-10-06-a-las-15-42-42-4f0860ec.jpg" alt="Imagen de la cuenta 15" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/qMDBWfyR/Imagen-de-Whats-App-2025-10-06-a-las-15-42-42-4f0860ec.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-015" class="text-sm text-gray-400 mb-4 h-12">
-                    Equipada para el combate y la supervivencia. ¡Nadie podrá contigo!
+        
+                 <p id="description-015" class="text-sm text-gray-400 mb-4 h-12">
+                    Equipada para el combate y la supervivencia.
+¡Nadie podrá contigo!
                 </p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 9.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+9.00</span>
                     <button onclick="payWithWhatsApp('015', '9.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
 
-            <!-- NUEVO PRODUCTO 016 -->
-            <div id="product-016" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 shadow-xl border-2 border-transparent">
+            <div id="product-016" class="relative block product-card-glow bg-gray-800 bg-opacity-70 rounded-2xl p-6 
+shadow-xl border-2 border-transparent">
                 <div class="product-number">016</div>
                 <div class="w-full h-48 bg-gray-700 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
-                    <img src="https://i.postimg.cc/Z0cmLxF9/Imagen-de-Whats-App-2025-10-06-a-las-15-42-41-3332608f.jpg" alt="Imagen de la cuenta 16" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/Z0cmLxF9/Imagen-de-Whats-App-2025-10-06-a-las-15-42-41-3332608f.jpg', event)">
+                    <img src="https://i.postimg.cc/MKCNnd8D/Imagen-de-Whats-App-2025-10-06-a-las-15-42-41-3332608f.jpg" alt="Imagen de la cuenta 16" class="w-full h-full object-cover rounded-xl cursor-pointer" onclick="showImageModal('https://i.postimg.cc/MKCNnd8D/Imagen-de-Whats-App-2025-10-06-a-las-15-42-41-3332608f.jpg', event)">
                 </div>
-                <!-- Contenedor de Descripción -->
-                <p id="description-016" class="text-sm text-gray-400 mb-4 h-12">
+       
+                 <p id="description-016" class="text-sm text-gray-400 mb-4 h-12">
                     Una cuenta base para nuevos comienzos en tu aventura de Roblox.
-                </p>
+</p>
                 <div class="flex justify-center items-center">
-                    <span class="text-3xl font-extrabold text-green-400">S/. 5.00</span>
+                    <span class="text-3xl font-extrabold text-green-400">S/.
+5.00</span>
                     <button onclick="payWithWhatsApp('016', '5.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -385,133 +470,90 @@
         </section>
 
         <section class="mt-8 text-center text-gray-500 text-xs">
-            <p>Todos los pagos se gestionan directamente a través de WhatsApp con el vendedor.</p>
+     
+               <p>Todos los pagos se gestionan directamente a través de WhatsApp con el vendedor.</p>
         </section>
 
     </div>
 
-    <!-- MODAL DE IMAGEN -->
     <div id="imageModal" class="image-modal" onclick="closeImageModal(event)">
-        <span id="closeButton" class="close-button">&times;</span>
+        <span id="closeButton" class="close-button">&times;</span> 
         <img id="modalImage" class="image-modal-content" src="">
     </div>
 
-    <!-- Contenedor de mensajes de error/éxito (en lugar de alert) -->
     <div id="messageBox" class="message-box text-sm"></div>
 
     <script type="text/javascript">
-        // --- Lógica del Contador de Visitas ---
-
-        // Configuración
-        const INITIAL_VISITS = 867;
-        const INCREMENT_AMOUNT = 2;
-        const INTERVAL_MS = 300000; // 5 minutos en milisegundos
-
-        /**
-         * Inicializa o recupera el contador de visitas y establece el incremento periódico.
-         */
-        function initializeVisitorCount() {
-            const countElement = document.getElementById('visitorCount');
-            
-            // 1. Obtener el contador guardado o usar el inicial
-            let currentCount = parseInt(localStorage.getItem('roblox_visits') || INITIAL_VISITS, 10);
-            
-            // Si es la primera vez que se carga, asegúrate de que al menos empiece en 867
-            if (currentCount < INITIAL_VISITS) {
-                currentCount = INITIAL_VISITS;
-            }
-            
-            countElement.textContent = currentCount.toLocaleString('en-US'); // Formato con comas para miles
-
-            // 2. Función para incrementar el contador
-            const incrementCount = () => {
-                currentCount += INCREMENT_AMOUNT;
-                localStorage.setItem('roblox_visits', currentCount);
-                countElement.textContent = currentCount.toLocaleString('en-US');
-            };
-
-            // 3. Incrementar inmediatamente y luego establecer el intervalo
-            // Incrementamos inmediatamente para simular que el contador ya empezó a correr.
-            incrementCount(); 
-            setInterval(incrementCount, INTERVAL_MS);
-        }
-
-        // Ejecutar la función de inicialización del contador cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', initializeVisitorCount);
-
+   
+      // ELIMINADO: Lógica del Contador de Visitas
 
         // --- Funciones de Utilidad (Mantenidas) ---
 
         // Global utility to show custom messages (replacing alert())
         function showMessage(text, isError = false) {
             const box = document.getElementById('messageBox');
-            box.textContent = text;
+ box.textContent = text;
             box.className = 'message-box show';
-            box.style.backgroundColor = isError ? '#dc2626' : '#10b981'; // Rojo o Verde Tailwind
+            box.style.backgroundColor = isError ? '#dc2626' : '#10b981';
+ // Rojo o Verde Tailwind
             box.style.color = '#fff';
-
-            setTimeout(() => {
+ setTimeout(() => {
                 box.classList.remove('show');
             }, 5000);
-        }
+ }
 
         // --- Lógica de Compra y Redirección a WhatsApp ---
 
         /**
          * Redirige al usuario a WhatsApp con el mensaje de compra.
-         * @param {string} productNumber - El número de identificación del producto (ej. '001').
-         * @param {string} productPrice - El precio del producto.
+ * @param {string} productNumber - El número de identificación del producto (ej. '001').
+ * @param {string} productPrice - El precio del producto.
          */
         window.payWithWhatsApp = function(productNumber, productPrice) {
             const productElement = document.getElementById(`product-${productNumber}`);
-            
-            // Verificación para asegurar que el producto existe
+ // Verificación para asegurar que el producto existe
             if (!productElement) {
                 showMessage(`Error: No se encontró el producto ${productNumber}.`, true);
-                return;
+ return;
             }
 
             const productName = productNumber;
-            const price = productPrice.trim(); 
+ const price = productPrice.trim(); 
             const whatsappNumber = '51900779111'; // Número de WhatsApp del vendedor
 
-            const message = `Hola, estoy interesado en comprar la cuenta ${productName} por S/. ${price}.
+            const message = `Hola, estoy interesado en comprar la cuenta ${productName} por S/.
+ ${price}.
             Quisiera saber los detalles para el pago (Yape/Plin/PayPal) y la entrega.`;
 
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappURL, '_blank');
-        }
+ }
 
-        // --- Funciones de Interfaz de Usuario (Modal de Imagen) ---
-
-        /**
-         * Muestra el modal de imagen en grande.
-         * @param {string} imageSrc - La URL de la imagen.
-         * @param {Event} event - El evento de click (para prevenir la apertura si se clica un botón).
-         */
         window.showImageModal = function(imageSrc, event) {
             // Evita la apertura del modal si el clic fue en el botón "Pagar" 
             if (event.target.tagName.toLowerCase() === 'button' || event.target.closest('button')) {
                 return;
-            }
+ }
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageSrc;
+ modalImage.src = imageSrc;
             modal.style.display = 'flex';
         }
 
         /**
          * Cierra el modal de imagen al hacer clic fuera de la imagen o en el botón de cerrar.
-         * @param {Event} event - El evento de click.
+ * @param {Event} event - El evento de click.
          */
         window.closeImageModal = function(event) {
             const modal = document.getElementById('imageModal');
-            // Cierra si el clic es en el fondo del modal o en el botón de cerrar
+ // Cierra si el clic es en el fondo del modal o en el botón de cerrar
             if (event.target === modal || event.target.id === 'closeButton') {
                 modal.style.display = 'none';
-                document.getElementById('modalImage').src = '';
+ document.getElementById('modalImage').src = '';
             }
         }
+
+        // ELIMINADO: document.addEventListener('DOMContentLoaded', initializeVisitorCount);
     </script>
 </body>
 </html>

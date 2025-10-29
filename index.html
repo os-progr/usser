@@ -230,7 +230,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-14.50</span>
+8.50</span>
                     <button onclick="payWithWhatsApp('003', '17.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -302,7 +302,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-11.50</span>
+9</span>
                     <button onclick="payWithWhatsApp('007', '14.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -320,7 +320,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-15.00</span>
+10.00</span>
                     <button onclick="payWithWhatsApp('008', '21.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -338,7 +338,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-5.00</span>
+4.00</span>
                     <button onclick="payWithWhatsApp('009', '12.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -391,7 +391,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-19.00</span>
+11.00</span>
                     <button onclick="payWithWhatsApp('012', '25.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -409,7 +409,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-10.50</span>
+8.50</span>
                     <button onclick="payWithWhatsApp('013', '14.50')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -445,7 +445,7 @@ border-2 border-transparent">
                 </p>
                 <div class="flex justify-center items-center">
                     <span class="text-3xl font-extrabold text-green-400">S/.
-9.00</span>
+6.00</span>
                     <button onclick="payWithWhatsApp('015', '9.00')" class="pay-button bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-200 shadow-md ml-auto">Pagar</button>
                 </div>
             </div>
@@ -485,24 +485,24 @@ shadow-xl border-2 border-transparent">
 
     <script type="text/javascript">
    
-      // ELIMINADO: Lógica del Contador de Visitas
+      
 
-        // --- Funciones de Utilidad (Mantenidas) ---
+       
 
-        // Global utility to show custom messages (replacing alert())
+       
         function showMessage(text, isError = false) {
             const box = document.getElementById('messageBox');
  box.textContent = text;
             box.className = 'message-box show';
             box.style.backgroundColor = isError ? '#dc2626' : '#10b981';
- // Rojo o Verde Tailwind
+ 
             box.style.color = '#fff';
  setTimeout(() => {
                 box.classList.remove('show');
             }, 5000);
  }
 
-        // --- Lógica de Compra y Redirección a WhatsApp ---
+       
 
         /**
          * Redirige al usuario a WhatsApp con el mensaje de compra.
@@ -511,7 +511,7 @@ shadow-xl border-2 border-transparent">
          */
         window.payWithWhatsApp = function(productNumber, productPrice) {
             const productElement = document.getElementById(`product-${productNumber}`);
- // Verificación para asegurar que el producto existe
+ 
             if (!productElement) {
                 showMessage(`Error: No se encontró el producto ${productNumber}.`, true);
  return;
@@ -519,7 +519,7 @@ shadow-xl border-2 border-transparent">
 
             const productName = productNumber;
  const price = productPrice.trim(); 
-            const whatsappNumber = '51900779111'; // Número de WhatsApp del vendedor
+            const whatsappNumber = '51900779111'; 
 
             const message = `Hola, estoy interesado en comprar la cuenta ${productName} por S/.
  ${price}.
@@ -530,7 +530,7 @@ shadow-xl border-2 border-transparent">
  }
 
         window.showImageModal = function(imageSrc, event) {
-            // Evita la apertura del modal si el clic fue en el botón "Pagar" 
+            
             if (event.target.tagName.toLowerCase() === 'button' || event.target.closest('button')) {
                 return;
  }
@@ -540,20 +540,17 @@ shadow-xl border-2 border-transparent">
             modal.style.display = 'flex';
         }
 
-        /**
-         * Cierra el modal de imagen al hacer clic fuera de la imagen o en el botón de cerrar.
- * @param {Event} event - El evento de click.
-         */
+       
+
+         
         window.closeImageModal = function(event) {
             const modal = document.getElementById('imageModal');
- // Cierra si el clic es en el fondo del modal o en el botón de cerrar
+ 
             if (event.target === modal || event.target.id === 'closeButton') {
                 modal.style.display = 'none';
  document.getElementById('modalImage').src = '';
             }
         }
-
-        // ELIMINADO: document.addEventListener('DOMContentLoaded', initializeVisitorCount);
     </script>
 </body>
 </html>
